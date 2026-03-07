@@ -19,9 +19,27 @@ pipeline {
             }
         }
 
-        stage('Build Maven') {
+
+         stage('Build & Test') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                sh 'mvn clean test'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                sh '''
+                mvn sonar:sonar \
+                -Dsonar.projectKey=cicd-service \
+                -Dsonar.host.url=http://localhost:9001 \
+                -Dsonar.login=sqa_ed00a4a88c8534403e9618e08daa37b19db8b6d4
+                '''
+            }
+        }
+
+        stage('Package') {
+            steps {
+                sh 'mvn package -DskipTests'
             }
         }
 
