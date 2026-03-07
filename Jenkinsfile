@@ -34,7 +34,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh '/usr/local/bin/docker build -t cicd-service:latest springboot-app/'
+                sh 'docker build -t cicd-service:latest .'
             }
         }
 
