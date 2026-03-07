@@ -34,7 +34,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh '/usr/local/bin/docker build -t cicd-service:latest .'
+                sh '/usr/local/bin/docker build -t cicd-service:${BUILD_NUMBER} .'
             }
         }
 
