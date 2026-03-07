@@ -7,6 +7,10 @@ pipeline {
         IMAGE = "cicd-service:latest"
     }
 
+    tools {
+        maven 'Maven-3'
+    }
+
     stages {
 
         stage('Checkout') {
