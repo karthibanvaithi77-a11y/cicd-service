@@ -25,6 +25,13 @@ pipeline {
             }
         }
 
+        stage('Debug Workspace') {
+            steps {
+                sh 'pwd'
+                sh 'ls -la'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 sh '/usr/local/bin/docker build -t cicd-service:latest springboot-app/'
