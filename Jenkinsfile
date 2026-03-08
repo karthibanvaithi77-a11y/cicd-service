@@ -22,14 +22,8 @@ pipeline {
 
          stage('Build & Test') {
             steps {
-                sh 'mvn clean test'
+                sh 'mvn clean verify'
             }
-        }
-
-        stage('Code Coverage (JaCoCo)') {
-            steps {
-                sh 'mvn jacoco:report'
-           }
         }
 
         stage('SonarQube Analysis') {
