@@ -26,6 +26,12 @@ pipeline {
             }
         }
 
+        stage('Code Coverage (JaCoCo)') {
+            steps {
+                sh 'mvn jacoco:report'
+           }
+        }
+
         stage('SonarQube Analysis') {
             steps {
                 sh '''
